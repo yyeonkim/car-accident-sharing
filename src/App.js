@@ -1,5 +1,6 @@
-import { Box, Center, Circle, Flex, Heading, Stack } from "@chakra-ui/react";
-import { BsFillPlayFill } from "react-icons/bs";
+import { Center, Flex, Heading } from "@chakra-ui/react";
+
+import VideoList from "./components/VideoList";
 
 const videos = [
   {
@@ -32,39 +33,7 @@ export default function App() {
         <Heading size="md" mb="3rem">
           전문가님께 도착했어요!
         </Heading>
-        <Stack spacing="2rem">
-          {videos.map((video) => (
-            <Center
-              key={video.id}
-              position="relative"
-              w={320}
-              h={180}
-              backgroundImage={video.thumbnail}
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="320px 180px"
-              borderRadius={20}
-            >
-              <Box
-                w={320}
-                h={180}
-                position="absolute"
-                backgroundColor="rgba(0, 0, 0, 0.5)"
-                borderRadius={20}
-              ></Box>
-              <Circle
-                position="absolute"
-                size="2rem"
-                bgColor="rgba(255,255,255,0.5)"
-                color="white"
-                zIndex={10}
-                textAlign="center"
-              >
-                <BsFillPlayFill size={20} />
-              </Circle>
-            </Center>
-          ))}
-        </Stack>
+        <VideoList />
       </Flex>
     </Center>
   );
