@@ -1,5 +1,15 @@
-import { cookieStorageManager, Heading, Stack } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  AlertDialogFooter,
+  Heading,
+  Stack,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
 
@@ -10,10 +20,13 @@ export default function OpinionArea() {
 
   const { register, watch, handleSubmit } = useForm();
   const { videoId } = useParams();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const completeRef = React.useRef();
 
   const onValid = (data) => {
     setOpinion("");
-    // 영상 분석 완료로 바꾸기
+    // DB 수정 (Loading.....)
+    onOpen();
   };
 
   return (
@@ -24,17 +37,38 @@ export default function OpinionArea() {
           style={inputStyle}
           {...register("opinion", { required: true })}
         />
-        <Link to="/expert/videos">
-          <button
-            style={{
-              ...buttonStyle,
-              backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
-            }}
-          >
-            완료
-          </button>
-        </Link>
+        <button
+          style={{
+            ...buttonStyle,
+            backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
+          }}
+        >
+          완료
+        </button>
       </form>
+
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={completeRef}
+        onClose={onClose}
+        bgColor="white"
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent w="80%" bgColor="white">
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              등록되었습니다
+            </AlertDialogHeader>
+
+            <AlertDialogFooter>
+              <Link to="/expert/videos">
+                <Button bgColor="#3F8CFF" color="white" ref={completeRef}>
+                  확인
+                </Button>
+              </Link>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </Stack>
   );
 }
