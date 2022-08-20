@@ -1,19 +1,23 @@
-import { cookieStorageManager, Heading, Stack } from "@chakra-ui/react";
-import { useState } from "react";
+import { Heading, Stack, useDisclosure } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { videos } from "../db";
+import ReviewAlertDialog from "./ReviewAlertDialog";
 
 export default function OpinionArea() {
   const [opinion, setOpinion] = useState("");
 
   const { register, watch, handleSubmit } = useForm();
   const { videoId } = useParams();
+  const control = useDisclosure();
+  const completeRef = React.useRef();
 
   const onValid = (data) => {
     setOpinion("");
-    // 영상 분석 완료로 바꾸기
+    // DB 수정 (Loading.....)
+    control.onOpen();
   };
 
   return (
@@ -24,17 +28,18 @@ export default function OpinionArea() {
           style={inputStyle}
           {...register("opinion", { required: true })}
         />
-        <Link to="/expert/videos">
-          <button
-            style={{
-              ...buttonStyle,
-              backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
-            }}
-          >
-            완료
-          </button>
-        </Link>
+        <button
+          style={{
+            ...buttonStyle,
+            backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
+          }}
+          disabled={watch("opinion") ? false : true}
+        >
+          완료
+        </button>
       </form>
+
+      <ReviewAlertDialog ref={completeRef} {...control} />
     </Stack>
   );
 }
