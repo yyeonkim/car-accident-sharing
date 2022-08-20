@@ -47,7 +47,7 @@ function VideoUploadPage() {
           </Center>
         )}
       </Dropzone>
-      <Link to="user/complete">
+      <Link to="/user/complete">
         <Button
           mt="4rem"
           bgColor={"#9A9A9A"}
