@@ -8,8 +8,8 @@ export const leftRatio = atom({
 export const rightRatio = selector({
   ket: "rightRatio",
   get: ({ get }) => {
-    const leftRatio = get(leftRatio);
+    const left = get(leftRatio);
 
-    return 10 - leftRatio;
+    return 10 - left;
   },
 });

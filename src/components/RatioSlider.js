@@ -9,29 +9,29 @@ import { useState } from "react";
 import { BsDot } from "react-icons/bs";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-import { leftRatio } from "../atom";
+import { leftRatio, rightRatio } from "../atom";
 
 const markValue = [10, 20, 30, 40, 50, 60, 70, 80, 90];
 
 export default function RatioSlider() {
   const [sliderValue, setSliderValue] = useState(50);
-  const [leftRatio, setLeftRatio] = useRecoilState(leftRatio);
-  const rightRatio = useSetRecoilState(rightRatio);
+  const [left, setLeft] = useRecoilState(leftRatio);
+  const setRight = useSetRecoilState(rightRatio);
 
   const onChange = (value) => {
     setSliderValue(value);
-    setRatioByValue(value);
+    showRatio(value);
   };
 
-  const setRatioByValue = (value) => {
+  const showRatio = (value) => {
     const units = value % 10;
 
     if (units <= 5) {
-      setLeftRatio(parseInt(value / 10));
+      setLeft(parseInt(value / 10));
     } else {
-      setLeftRatio(parseInt(value / 10) + 1);
+      setRight(parseInt(value / 10) + 1);
     }
-    setRightRatio(10 - leftRatio);
+    setRight(10 - left);
   };
 
   const onChangeEnd = (value) => {
