@@ -6,7 +6,12 @@ export default function Result({ item }) {
     <Box shadow="md" borderWidth="1px" borderRadius=".5rem">
       <Flex justifyContent="space-between" alignItems="center" m={4}>
         <Flex alignItems="center">
-          <Image w="10rem" src={"../" + item.imgUrl} alt="Company" mr="1rem" />
+          <Image
+            w="10rem"
+            src={"/images/" + item.imgUrl}
+            alt="Company"
+            mr="1rem"
+          />
           <Box fontSize="sm" lineHeight="1.5rem">
             <Text>{item.createdAt}</Text>
             <Text>예측 비율 {item.ratio}</Text>

@@ -13,7 +13,7 @@ export default function App() {
       m="0 auto"
     >
       <Link to="/user">
-        <UsearIcon imgUrl="driver.png" text="운전자" />
+        <UsearIcon imgUrl="images/driver.png" text="운전자" />
       </Link>
       <Center height="50px">
         <Divider
@@ -23,7 +23,7 @@ export default function App() {
         />
       </Center>
       <Link to="/expert/videos">
-        <UsearIcon imgUrl="expert.png" text="전문가" />
+        <UsearIcon imgUrl="images/expert.png" text="전문가" />
       </Link>
     </Flex>
   );
