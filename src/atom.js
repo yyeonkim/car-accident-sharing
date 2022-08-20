@@ -1,12 +1,12 @@
 import { atom, selector } from "recoil";
 
 export const leftRatio = atom({
-  ket: "leftRatio",
+  key: "leftRatio",
   default: 5,
 });
 
 export const rightRatio = selector({
-  ket: "rightRatio",
+  key: "rightRatio",
   get: ({ get }) => {
     const left = get(leftRatio);
 
