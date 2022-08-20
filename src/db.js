@@ -1,4 +1,4 @@
-videos = [
+export const videos = [
   {
     id: "32874824",
     thumbnail:

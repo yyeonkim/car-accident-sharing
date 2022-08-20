@@ -2,28 +2,7 @@ import { Box, Center, Circle, Stack } from "@chakra-ui/react";
 import { BsFillPlayFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const videos = [
-  {
-    id: "32874824",
-    thumbnail:
-      "https://images.unsplash.com/photo-1566933293069-b55c7f326dd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-  {
-    id: "234",
-    thumbnail:
-      "https://images.unsplash.com/photo-1566933293069-b55c7f326dd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-  {
-    id: "43434",
-    thumbnail:
-      "https://images.unsplash.com/photo-1566933293069-b55c7f326dd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-  {
-    id: "234432",
-    thumbnail:
-      "https://images.unsplash.com/photo-1566933293069-b55c7f326dd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-];
+import { videos } from "../db";
 
 export default function VideoList() {
   return (
@@ -32,9 +11,8 @@ export default function VideoList() {
       sx={{ "--video-width": "320px", " --video-height": "180px" }}
     >
       {videos.map((video) => (
-        <Link to="/expert/videos/3">
+        <Link to={"/expert/videos/" + video.id} key={video.id}>
           <Center
-            key={video.id}
             position="relative"
             w="var(--video-width)"
             h="var(--video-height)"
