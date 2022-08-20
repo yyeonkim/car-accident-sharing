@@ -1,13 +1,4 @@
-import {
-  background,
-  Button,
-  Center,
-  Flex,
-  Heading,
-  Input,
-  Stack,
-} from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Center, Flex, Heading, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -15,12 +6,13 @@ import Ratio from "../components/Ratio";
 
 export default function VideoReviewPage() {
   const [opinion, setOpinion] = useState("");
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onValid = (data) => console.log(errors);
+
+  const { register, watch, handleSubmit } = useForm();
+
+  const onValid = (data) => {
+    setOpinion("");
+    console.log(data);
+  };
 
   return (
     <Center>
@@ -35,7 +27,14 @@ export default function VideoReviewPage() {
                 style={inputStyle}
                 {...register("opinion", { required: true })}
               />
-              <button style={buttonStyle}>완료</button>
+              <button
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
+                }}
+              >
+                완료
+              </button>
             </form>
           </Stack>
         </Flex>
@@ -56,9 +55,8 @@ const inputStyle = {
 const buttonStyle = {
   width: "100%",
   height: "4rem",
-  backgroundColor: "gray",
-  borderRadius: "10px",
   color: "white",
+  borderRadius: "10px",
   fontSize: "1.2rem",
   fontWeight: "bold",
 };
