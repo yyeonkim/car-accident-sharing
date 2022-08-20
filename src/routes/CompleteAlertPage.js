@@ -1,4 +1,5 @@
 import { Button, Flex, Text, Heading, Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function CompleteAlertPage() {
   return (
@@ -9,9 +10,11 @@ export default function CompleteAlertPage() {
         </Heading>
         <Text>분석이 완료되는 대로 알려드리겠습니다.</Text>
       </Box>
-      <Button bgColor="#3F8CFF" color="white" h="4rem" w="100%" mb="5rem">
-        확인
-      </Button>
+      <Link to="/user">
+        <Button bgColor="#3F8CFF" color="white" h="4rem" w="100%" mb="5rem">
+          확인
+        </Button>
+      </Link>
     </Flex>
   );
 }
