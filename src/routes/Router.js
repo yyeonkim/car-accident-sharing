@@ -15,7 +15,7 @@ export default function Router() {
       <Route path="/expert/videos/:videoId" element={<VideoReviewPage />} />
       <Route path="/user" element={<VideoUploadPage />} />
       <Route path="/user/resultList" element={<ResultList />} />
-      <Route path="/user/resultList/:resultId" element={<ResultScreen />} />
+      <Route path="/user/resultList/detail" element={<ResultScreen />} />
     </Routes>
   );
 }

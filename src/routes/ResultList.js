@@ -27,7 +27,7 @@ function ResultThum({img,date,ratio,num}) {
               </VStack>
             </Box>
           <div>
-            <Link to = "/user/resultList">
+            <Link to = "./detail">
                 <IoIosArrowForward />
             </Link>
           </div>

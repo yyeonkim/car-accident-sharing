@@ -1,5 +1,4 @@
 import { Center, Flex, Heading } from "@chakra-ui/react";
-
 import VideoList from "../components/VideoList";
 import { videos } from "../db";
 

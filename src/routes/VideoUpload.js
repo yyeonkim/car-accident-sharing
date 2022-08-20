@@ -7,7 +7,7 @@ function VideoUploadPage(){
     return(
         <div style={{maxWidth:'700px',margin:'2rem auto' }}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
-                <Link to ='./user/resultList'>
+                <Link to ='./resultList'>
                     <Button>결과 확인하기</Button>
                 </Link>
                 <Heading as='h2'>
