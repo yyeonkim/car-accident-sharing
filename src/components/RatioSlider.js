@@ -70,7 +70,10 @@ export default function RatioSlider() {
           <BsDot size="25px" />
         </SliderMark>
       ))}
-      <SliderThumb bgColor="#9A9A9A" />
+      <SliderThumb
+        bgColor="#3F8CFF
+"
+      />
     </Slider>
   );
 }
