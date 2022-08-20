@@ -12,7 +12,7 @@ export default function App() {
       w="75%"
       m="0 auto"
     >
-      <Link to="">
+      <Link to="/user">
         <UsearIcon imgUrl="driver.png" text="운전자" />
       </Link>
       <Center height="50px">

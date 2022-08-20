@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import App from "../App";
 import VideoListPage from "../routes/VideoListPage";
 import VideoReviewPage from "../routes/VideoReviewPage";
-import VideoUploadPage from "../routes/VideoUpload";
+import VideoUploadPage from "../routes/VideoUploadPage";
 import ResultList from "../routes/ResultList";
 import ResultScreen from "../routes/ResultScreen";
 
