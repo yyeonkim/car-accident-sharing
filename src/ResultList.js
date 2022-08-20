@@ -3,7 +3,7 @@ import acc from './asset/acc.png'
 import {Image,Text,Flex,Spacer,Center, Heading,Box, HStack, Circle, VStack } from '@chakra-ui/react'
 import {IoIosArrowForward} from 'react-icons/io';
 import ResultScreen from './ResultScreen.js';
-
+import { Link } from "react-router-dom";
 
 function ResultThum({img,date,ratio,num}) {
     return (
@@ -28,7 +28,9 @@ function ResultThum({img,date,ratio,num}) {
               </VStack>
             </Box>
           <div>
-          <IoIosArrowForward onClick = />
+            <Link to = "/user/resultList">
+                <IoIosArrowForward />
+            </Link>
           </div>
           
         </Flex>

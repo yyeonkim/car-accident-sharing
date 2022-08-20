@@ -1,11 +1,15 @@
 import React from 'react';
-import { Heading, ChakraProvider } from '@chakra-ui/react'
+import { Heading, ChakraProvider, Button } from '@chakra-ui/react'
 import Dropzone from 'react-dropzone';
 import {AiFillFileAdd} from 'react-icons/ai';
+import { Link } from "react-router-dom";
 function VideoUploadPage(){
     return(
         <div style={{maxWidth:'700px',margin:'2rem auto' }}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
+                <Link to ='./user/resultList'>
+                    <Button>결과 확인하기</Button>
+                </Link>
                 <Heading as='h2'>
                     Upload Video
                 </Heading>
@@ -21,6 +25,7 @@ function VideoUploadPage(){
                         <AiFillFileAdd/>
                     </div>
                     )}</Dropzone>
+                <Button>분석접수하기</Button>
             </div>
         </div>
     )
