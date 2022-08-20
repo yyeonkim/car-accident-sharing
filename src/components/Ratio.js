@@ -1,11 +1,11 @@
 import { Stack, Heading } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import RatioSlider from "./RatioSlider";
 
 export default function Ratio() {
-  const [leftRatio, setLeftRatio] = useState(5);
-  const [rightRatio, setRightRatio] = useState(10 - leftRatio);
+  const leftRatio = useRecoilValue(leftRatio);
+  const rightRatio = useRecoilValue(rightRatio);
 
   return (
     <Stack spacing="2rem" mb="3rem">
