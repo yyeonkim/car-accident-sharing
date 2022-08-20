@@ -10,6 +10,8 @@ function VideoUploadPage() {
     // console.log(files);
   };
 
+  const onClick = () => {};
+
   return (
     <Flex
       direction="column"
@@ -45,17 +47,20 @@ function VideoUploadPage() {
           </Center>
         )}
       </Dropzone>
-      <Button
-        mt="4rem"
-        bgColor={"#9A9A9A"}
-        color="white"
-        w="100%"
-        h="4rem"
-        fontSize="lg"
-        fontWeight="bold"
-      >
-        분석 접수
-      </Button>
+      <Link to="user/complete">
+        <Button
+          mt="4rem"
+          bgColor={"#9A9A9A"}
+          color="white"
+          w="15rem"
+          h="4rem"
+          fontSize="lg"
+          fontWeight="bold"
+          onClick={onClick}
+        >
+          분석 접수
+        </Button>
+      </Link>
     </Flex>
   );
 }
