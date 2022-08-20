@@ -28,10 +28,10 @@ const itemList = [
 export default function ResultList() {
   return (
     <Flex direction="column">
-      <Heading fontSize="2xl" lineHeight="2.5rem" m="1.5rem" mt="4rem">
+      <Heading fontSize="2xl" lineHeight="2.5rem" m="2rem" mt="4rem">
         총 3건의
         <br />
-        김열정님의 분석 결과 입니다!
+        김열정님의 분석 결과 입니다
       </Heading>
       <Stack spacing="2rem" px="2rem">
         {itemList.map((item) => (

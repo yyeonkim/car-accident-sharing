@@ -54,7 +54,7 @@ function VideoUploadPage() {
           color="white"
           w="15rem"
           h="4rem"
-          fontSize="lg"
+          fontSize="xl"
           fontWeight="bold"
           onClick={onClick}
         >

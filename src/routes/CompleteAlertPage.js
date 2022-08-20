@@ -11,7 +11,14 @@ export default function CompleteAlertPage() {
         <Text>분석이 완료되는 대로 알려드리겠습니다.</Text>
       </Box>
       <Link to="/user">
-        <Button bgColor="#3F8CFF" color="white" h="4rem" w="100%" mb="5rem">
+        <Button
+          bgColor="#3F8CFF"
+          fontSize="xl"
+          color="white"
+          h="4rem"
+          w="100%"
+          mb="5rem"
+        >
           확인
         </Button>
       </Link>

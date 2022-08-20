@@ -13,7 +13,7 @@ export default function Result({ item }) {
             <Text>{item.candidate}명 참여</Text>
           </Box>
         </Flex>
-        <Center color="gray.400">
+        <Center color="#9A9A9A">
           <IoIosArrowForward />
         </Center>
       </Flex>
