@@ -1,6 +1,7 @@
 import { Center, Flex, Heading, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import Ratio from "../components/Ratio";
 
@@ -26,14 +27,16 @@ export default function VideoReviewPage() {
                 style={inputStyle}
                 {...register("opinion", { required: true })}
               />
-              <button
-                style={{
-                  ...buttonStyle,
-                  backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
-                }}
-              >
-                완료
-              </button>
+              <Link to="/expert/videos">
+                <button
+                  style={{
+                    ...buttonStyle,
+                    backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
+                  }}
+                >
+                  완료
+                </button>
+              </Link>
             </form>
           </Stack>
         </Flex>
