@@ -9,4 +9,9 @@ export const customeTheme = extendTheme({
       },
     },
   },
+
+  fonts: {
+    heading: `'Roboto', sans-serif`,
+    body: `'Roboto', sans-serif`,
+  },
 });
