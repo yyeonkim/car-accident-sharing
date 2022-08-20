@@ -1,4 +1,4 @@
-import { Box, Center, Circle, Heading, Stack } from "@chakra-ui/react";
+import { Box, Center, Circle, Flex, Heading, Stack } from "@chakra-ui/react";
 import { BsFillPlayFill } from "react-icons/bs";
 
 const videos = [
@@ -26,36 +26,46 @@ const videos = [
 
 export default function App() {
   return (
-    <Center pt="6rem">
-      <Stack>
-        <Heading size="lg">3건의 영상이</Heading>
-        <Heading size="lg">전문가님께 도착했어요</Heading>
-        {videos.map((video) => (
-          <Box
-            key={video.id}
-            position="relative"
-            w={304}
-            h={171}
-            backgroundImage={video.thumbnail}
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="304px 171px"
-            mb="2rem"
-            borderRadius={20}
-          >
-            <Box
-              w={304}
-              h={171}
-              position="absolute"
-              backgroundColor="rgba(0, 0, 0, 0.5)"
+    <Center py="6rem">
+      <Flex direction="column" justifyContent="center">
+        <Heading size="md">3건의 영상이</Heading>
+        <Heading size="md" mb="3rem">
+          전문가님께 도착했어요!
+        </Heading>
+        <Stack spacing="2rem">
+          {videos.map((video) => (
+            <Center
+              key={video.id}
+              position="relative"
+              w={320}
+              h={180}
+              backgroundImage={video.thumbnail}
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="320px 180px"
               borderRadius={20}
-            ></Box>
-            <Circle size="4rem" bg="D9D9D9" color="white" zIndex={10}>
-              <BsFillPlayFill />
-            </Circle>
-          </Box>
-        ))}
-      </Stack>
+            >
+              <Box
+                w={320}
+                h={180}
+                position="absolute"
+                backgroundColor="rgba(0, 0, 0, 0.5)"
+                borderRadius={20}
+              ></Box>
+              <Circle
+                position="absolute"
+                size="2rem"
+                bgColor="rgba(255,255,255,0.5)"
+                color="white"
+                zIndex={10}
+                textAlign="center"
+              >
+                <BsFillPlayFill size={20} />
+              </Circle>
+            </Center>
+          ))}
+        </Stack>
+      </Flex>
     </Center>
   );
 }
