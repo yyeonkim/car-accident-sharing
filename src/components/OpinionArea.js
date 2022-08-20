@@ -1,32 +1,23 @@
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  AlertDialogFooter,
-  Heading,
-  Stack,
-  useDisclosure,
-  Button,
-} from "@chakra-ui/react";
+import { Heading, Stack, useDisclosure } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { videos } from "../db";
+import ReviewAlertDialog from "./ReviewAlertDialog";
 
 export default function OpinionArea() {
   const [opinion, setOpinion] = useState("");
 
   const { register, watch, handleSubmit } = useForm();
   const { videoId } = useParams();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const control = useDisclosure();
   const completeRef = React.useRef();
 
   const onValid = (data) => {
     setOpinion("");
     // DB 수정 (Loading.....)
-    onOpen();
+    control.onOpen();
   };
 
   return (
@@ -42,33 +33,13 @@ export default function OpinionArea() {
             ...buttonStyle,
             backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
           }}
+          disabled={watch("opinion") ? false : true}
         >
           완료
         </button>
       </form>
 
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={completeRef}
-        onClose={onClose}
-        bgColor="white"
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent w="80%" bgColor="white">
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              등록되었습니다
-            </AlertDialogHeader>
-
-            <AlertDialogFooter>
-              <Link to="/expert/videos">
-                <Button bgColor="#3F8CFF" color="white" ref={completeRef}>
-                  확인
-                </Button>
-              </Link>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+      <ReviewAlertDialog ref={completeRef} {...control} />
     </Stack>
   );
 }
