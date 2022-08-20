@@ -1,4 +1,6 @@
-import { Center, Divider, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import { Center, Divider, Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import UsearIcon from "./components/UserIcon";
 
 export default function App() {
   return (
@@ -9,12 +11,9 @@ export default function App() {
       w="75%"
       m="0 auto"
     >
-      <Stack spacing="1rem" textAlign="center">
-        <Image src="driver.png" boxSize="6rem" />
-        <Text fontWeight="bold" fontSize="xl">
-          운전자
-        </Text>
-      </Stack>
+      <Link to="">
+        <UsearIcon imgUrl="driver.png" text="운전자" />
+      </Link>
       <Center height="50px">
         <Divider
           orientation="vertical"
@@ -22,12 +21,9 @@ export default function App() {
           h="20rem"
         />
       </Center>
-      <Stack spacing="1rem" textAlign="center">
-        <Image src="expert.png" boxSize="6rem" />
-        <Text fontWeight="bold" fontSize="xl">
-          전문가
-        </Text>
-      </Stack>
+      <Link to="/expert/videos">
+        <UsearIcon imgUrl="expert.png" text="전문가" />
+      </Link>
     </Flex>
   );
 }
