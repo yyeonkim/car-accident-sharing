@@ -7,16 +7,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsDot } from "react-icons/bs";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
-import { leftRatio, rightRatio } from "../atom";
+import { leftRatioState } from "../atom";
 
 const markValue = [10, 20, 30, 40, 50, 60, 70, 80, 90];
 
 export default function RatioSlider() {
   const [sliderValue, setSliderValue] = useState(50);
-  const [left, setLeft] = useRecoilState(leftRatio);
-  const setRight = useSetRecoilState(rightRatio);
+  const setLeftRatio = useSetRecoilState(leftRatioState);
 
   const onChange = (value) => {
     setSliderValue(value);
@@ -27,11 +26,10 @@ export default function RatioSlider() {
     const units = value % 10;
 
     if (units <= 5) {
-      setLeft(parseInt(value / 10));
+      setLeftRatio(parseInt(value / 10));
     } else {
-      setRight(parseInt(value / 10) + 1);
+      setLeftRatio(parseInt(value / 10) + 1);
     }
-    setRight(10 - left);
   };
 
   const onChangeEnd = (value) => {

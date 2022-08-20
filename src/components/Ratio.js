@@ -1,18 +1,18 @@
 import { Stack, Heading } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 
-import { leftRatio, rightRatio } from "../atom";
+import { leftRatioState, rightRatioState } from "../atom";
 import RatioSlider from "./RatioSlider";
 
 export default function Ratio() {
-  const left = useRecoilValue(leftRatio);
-  const right = useRecoilValue(rightRatio);
+  const leftRatio = useRecoilValue(leftRatioState);
+  const rightRatio = useRecoilValue(rightRatioState);
 
   return (
     <Stack spacing="2rem" mb="3rem">
       <Heading size="md">과실 비율</Heading>
       <Heading textAlign="center" size="lg">
-        {left} vs {right}
+        {leftRatio} vs {rightRatio}
       </Heading>
       <RatioSlider />
     </Stack>

@@ -11,7 +11,6 @@ export default function VideoReviewPage() {
 
   const onValid = (data) => {
     setOpinion("");
-    console.log(data);
   };
 
   return (
@@ -23,7 +22,7 @@ export default function VideoReviewPage() {
           <Stack spacing="2rem">
             <Heading size="md">의견</Heading>
             <form onSubmit={handleSubmit(onValid)}>
-              <input
+              <textarea
                 style={inputStyle}
                 {...register("opinion", { required: true })}
               />

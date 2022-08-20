@@ -1,15 +1,15 @@
 import { atom, selector } from "recoil";
 
-export const leftRatio = atom({
+export const leftRatioState = atom({
   key: "leftRatio",
   default: 5,
 });
 
-export const rightRatio = selector({
+export const rightRatioState = selector({
   key: "rightRatio",
   get: ({ get }) => {
-    const left = get(leftRatio);
+    const leftRatio = get(leftRatioState);
 
-    return 10 - left;
+    return 10 - leftRatio;
   },
 });
