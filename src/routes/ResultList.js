@@ -1,8 +1,7 @@
 import React from 'react';
-import acc from './asset/acc.png'
+
 import {Image,Text,Flex,Spacer,Center, Heading,Box, HStack, Circle, VStack } from '@chakra-ui/react'
 import {IoIosArrowForward} from 'react-icons/io';
-import ResultScreen from './ResultScreen.js';
 import { Link } from "react-router-dom";
 
 function ResultThum({img,date,ratio,num}) {
@@ -45,9 +44,9 @@ function ResultList(){
                 김열정님의 분석 결과 입니다!
             </Heading>
         <Box m={4} p={1} shadow='md' borderWidth='1px' borderRadius={8} >
-        <ResultThum img={acc} data = "2022년 7월 12일" ratio ="7:3" num = '5'/>
-        <ResultThum img={acc} data = "2022년 6월 2일" ratio ="4:6" num = '3'/>
-        <ResultThum img={acc} data = "2022년 5월 21일" ratio ="8:2" num = '4'/>
+        <ResultThum img={'acc.png'} data = "2022년 7월 12일" ratio ="7:3" num = '5'/>
+        <ResultThum img={'acc.png'} data = "2022년 6월 2일" ratio ="4:6" num = '3'/>
+        <ResultThum img={'acc.png'} data = "2022년 5월 21일" ratio ="8:2" num = '4'/>
         </Box>
         </div>
     );

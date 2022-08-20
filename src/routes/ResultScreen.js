@@ -1,18 +1,7 @@
 import React from 'react';
 import {Image,Text,Flex,Spacer,Center, Heading,Box, HStack, Circle, VStack } from '@chakra-ui/react'
 import {IoIosArrowForward} from 'react-icons/io';
-import img1 from './asset/logo_1.png'
-import img2 from './asset/logo_2.png' 
-import img3 from './asset/logo_3.png' 
-import img4 from './asset/logo_4.png' 
-function SectionCard({ title, desc, ...rest }) {
-    return (
-      <Box shadow='md' borderWidth='1px' {...rest}>
-        <Heading fontSize='xl'>{title}</Heading>
-        <Text mt={4}>{desc}</Text>
-      </Box>
-    )
-  }
+
 function InformCard({img,ratio,content}) {
     return (
       <Box m={4} p={1} shadow='md' borderWidth='1px' borderRadius={8} >
@@ -75,13 +64,13 @@ function ResultScreen(){
           <Heading as='h4' size='md'>
           보험사 분석
           </Heading>
-          <InformCard img={img1}
+          <InformCard img={'logo_1.png'}
         ratio = "7:3" content = "제가 보았을때는 피해자분의 차량이.."/>
-          <InformCard img = {img2}
+          <InformCard img = {'logo_2.png'}
           ratio = "8:2" content = "영상으로 판독해본 결과 90퍼센트의.."/>
-          <InformCard img = {img3}
+          <InformCard img = {'logo_3.png'}
           ratio = "7:3" content = "제가 보았을때는 피해자분의 차량이.."/>
-          <InformCard img = {img4}
+          <InformCard img = {'logo_4.png'}
           ratio = "7:3" content = "영상으로 판독해본 결과 90퍼센트의.."/>
           <Flex  alignItems = 'right'>
             <Text>
