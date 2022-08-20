@@ -16,24 +16,26 @@ function SectionCard({ title, desc, ...rest }) {
 function InformCard({img,ratio,content}) {
     return (
       <Box m={4} p={1} shadow='md' borderWidth='1px' borderRadius={8} >
-        <Flex align='center'm={4}>
-          <Image  
-          w ='40%'
-          src={img}
-          alt='Company'
-          />
-          <VStack w='50%'>
-            <Text
-            textAlign='right'
-           >
-            {ratio}
-            </Text>
-            <Text
-           >
-            {content}
-            </Text>
-          </VStack>
+        <Flex align='center' justifyContent= "space-between" alignItems = 'center' m={4}>
+            <Box>
+              <Image  
+              w ='40%'
+              src={img}
+              alt='Company'
+              />
+              <VStack w='50%'>
+                <Text>
+                {ratio}
+                </Text>
+                <Text>
+                {content}
+                </Text>
+              </VStack>
+            </Box>
+          <div>
           <IoIosArrowForward/>
+          </div>
+          
         </Flex>
       </Box>  
     )
@@ -43,12 +45,14 @@ function ResultScreen(){
     return(
 <div>
   <Heading m={4}>
-    총 3건의<br/>
-    김열정님 분석결과 입니다!
+    김열정님의<br/>
+    분석결과 입니다
   </Heading>
+  <Spacer/>
       <Box m={4} p={1} shadow='md' borderWidth='1px' borderRadius={8} >
-        <Flex align='center'm={4}>
-            <Heading>
+        <Flex  justifyContent= "space-between" alignItems = 'center' m={4}>
+            <div>
+            <Heading as='h4' size='md'>
               과실비율
             </Heading>
             <Text
@@ -58,27 +62,35 @@ function ResultScreen(){
             <Text>
               으로 분석됩니다
             </Text>
-          <IoIosArrowForward/>
+            </div>
+            <div>
+            <IoIosArrowForward/>
+            </div>
+          
         </Flex>
       </Box>
-      {/* <SectionCard title = "과실 비율" trailing = "보험사 통계 보러가기/>*/}
-      {/* <SectionCard title = "보험사 분석" trailing = "보험사 통계 보러가기/>*/}
+      <Spacer/>
       <Box m={4} p={1} shadow='md' borderWidth='1px' borderRadius={8}>
-        <Heading>
-        보험사 분석
-        </Heading>
-        <InformCard img={img1}
-      ratio = "7:3" content = "제가 보았을때는 피해자분의 차량이.."/>
-        <InformCard img = {img2}
-        ratio = "8:2" content = "영상으로 판독해본 결과 90퍼센트의.."/>
-        <InformCard img = {img3}
-        ratio = "7:4" content = "제가 보았을때는 피해자분의 차량이.."/>
-        <InformCard img = {img4}
-        ratio = "7:4" content = "영상으로 판독해본 결과 90퍼센트의.."/>
-        <Text>
-        보험사 통계 보러가기
-        </Text>
-        <IoIosArrowForward/>
+        <Box m ={4}>
+          <Heading as='h4' size='md'>
+          보험사 분석
+          </Heading>
+          <InformCard img={img1}
+        ratio = "7:3" content = "제가 보았을때는 피해자분의 차량이.."/>
+          <InformCard img = {img2}
+          ratio = "8:2" content = "영상으로 판독해본 결과 90퍼센트의.."/>
+          <InformCard img = {img3}
+          ratio = "7:3" content = "제가 보았을때는 피해자분의 차량이.."/>
+          <InformCard img = {img4}
+          ratio = "7:3" content = "영상으로 판독해본 결과 90퍼센트의.."/>
+          <Flex  alignItems = 'right'>
+            <Text>
+            보험사 통계 보러가기
+            </Text>
+            <IoIosArrowForward/>
+          </Flex>
+          
+        </Box>
       </Box>
       {/* </SectionCard>  */}
       </div>
