@@ -9,14 +9,9 @@ import { getDatabase, ref, set } from "firebase/database";
 const onDrop = (files) => {
   // console.log(files);
 };
-
-function postInform(userId, video) {
-  const db = getDatabase();
-  set(ref(db, "users/" + userId), {
-    author: userId,
-    video: video,
-  });
-}
+const onClick = (files) => {
+  // console.log(files);
+};
 
 function VideoUploadPage() {
   return (
@@ -63,7 +58,7 @@ function VideoUploadPage() {
           h="4rem"
           fontSize="xl"
           fontWeight="bold"
-          onClick={postInform()}
+          onClick={onClick}
         >
           분석 접수
         </Button>
