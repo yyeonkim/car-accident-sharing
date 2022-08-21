@@ -4,14 +4,24 @@ import Dropzone from "react-dropzone";
 import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { getDatabase, ref, set } from "firebase/database";
+
+const onDrop = (files) => {
+  // console.log(files);
+};
+
+function postInform(userId,video) {
+
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    author: userId,
+    video : video
+  });
+}
+
 
 function VideoUploadPage() {
-  const onDrop = (files) => {
-    // console.log(files);
-  };
-
-  const onClick = () => {};
-
+  
   return (
     <Flex
       direction="column"
@@ -29,24 +39,34 @@ function VideoUploadPage() {
       <Heading fontSize="xl" mb="2rem">
         영상 업로드하기
       </Heading>
-      <Dropzone onDrop={onDrop} multiple={false} maxSize>
-        {({ getRootProps, getInputProps }) => (
-          <Center
-            bgColor="gray.100"
-            width="100%"
-            height="50vh"
-            borderRadius="2rem"
-            border="1px solid light gray"
-            alignItems="center"
-            justifyContent="center"
-            color="#3F8CFF"
-            {...getRootProps()}
-          >
-            <input {...getInputProps()} />
-            <AiFillFileAdd size="8rem" />
-          </Center>
-        )}
-      </Dropzone>
+     <input type = "file"
+onChange = {
+  (e) => {
+    let videoObj = e.currentTarget.files[0];
+    // console.log(videoObj)
+    let {
+      name,
+      size,
+      type
+    } = videoObj;
+
+    size = size / 1000000
+    //for not uploading the file more than 10 MB
+    if (size > 10) {
+      alert("please upload file less than 10 MB");
+      return;
+    }
+
+    //code for only uploading the video
+
+    type = type.split("/")[0];
+
+    if (type != "video") {
+      alert("please upload video only");
+      return;
+    }
+  }
+}/>
       <Link to="/user/complete">
         <Button
           mt="4rem"
@@ -56,8 +76,7 @@ function VideoUploadPage() {
           h="4rem"
           fontSize="xl"
           fontWeight="bold"
-          onClick={onClick}
-        >
+          onClick={postInform()} >
           분석 접수
         </Button>
       </Link>
