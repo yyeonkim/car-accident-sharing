@@ -10,18 +10,15 @@ const onDrop = (files) => {
   // console.log(files);
 };
 
-function postInform(userId,video) {
-
+function postInform(userId, video) {
   const db = getDatabase();
-  set(ref(db, 'users/' + userId), {
+  set(ref(db, "users/" + userId), {
     author: userId,
-    video : video
+    video: video,
   });
 }
 
-
 function VideoUploadPage() {
-  
   return (
     <Flex
       direction="column"
@@ -39,34 +36,24 @@ function VideoUploadPage() {
       <Heading fontSize="xl" mb="2rem">
         영상 업로드하기
       </Heading>
-     <input type = "file"
-onChange = {
-  (e) => {
-    let videoObj = e.currentTarget.files[0];
-    // console.log(videoObj)
-    let {
-      name,
-      size,
-      type
-    } = videoObj;
-
-    size = size / 1000000
-    //for not uploading the file more than 10 MB
-    if (size > 10) {
-      alert("please upload file less than 10 MB");
-      return;
-    }
-
-    //code for only uploading the video
-
-    type = type.split("/")[0];
-
-    if (type != "video") {
-      alert("please upload video only");
-      return;
-    }
-  }
-}/>
+      <Dropzone onDrop={onDrop} multiple={false}>
+        {({ getRootProps, getInputProps }) => (
+          <Center
+            bgColor="gray.100"
+            width="100%"
+            height="50vh"
+            borderRadius="2rem"
+            border="1px solid light gray"
+            alignItems="center"
+            justifyContent="center"
+            color="#3F8CFF"
+            {...getRootProps()}
+          >
+            <input {...getInputProps()} />
+            <AiFillFileAdd size="8rem" />
+          </Center>
+        )}
+      </Dropzone>
       <Link to="/user/complete">
         <Button
           mt="4rem"
@@ -76,7 +63,8 @@ onChange = {
           h="4rem"
           fontSize="xl"
           fontWeight="bold"
-          onClick={postInform()} >
+          onClick={postInform()}
+        >
           분석 접수
         </Button>
       </Link>

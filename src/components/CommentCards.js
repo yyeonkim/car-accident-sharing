@@ -24,6 +24,7 @@ const company = [
     comment: "영상으로 판독해본 결과 90퍼..",
   },
 ];
+console.log(company);
 
 export default function CommentCards() {
   return company.map((com) => (
@@ -41,7 +42,7 @@ export default function CommentCards() {
           mr="1rem"
           w="4rem"
           h="auto"
-          src={`/images/${com.img}`}
+          src={`/public/images/${com.img}`}
           alt="infopany"
         />
         <Stack fontSize="sm">
