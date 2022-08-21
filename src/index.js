@@ -7,6 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RecoilRoot } from "recoil";
 import Router from "./routes/Router";
 import { customeTheme } from "./theme";
+import * as serviceWorker from "./serviceWorkerRegistration";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,3 +21,5 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+serviceWorker.register();
