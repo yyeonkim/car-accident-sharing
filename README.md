@@ -7,6 +7,5 @@
 ### React.JS
 ### render to PWA
 
-## Contributors
 
 
