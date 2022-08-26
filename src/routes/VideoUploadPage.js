@@ -13,9 +13,10 @@ import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getMetadata } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
 
-import { storage } from "../firebase.js";
+import { storage, db } from "../firebase.js";
 
 function VideoUploadPage() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
@@ -31,12 +32,21 @@ function VideoUploadPage() {
     setFile(acceptedFiles);
   }, [acceptedFiles]);
 
-  const submitVideo = () => {
-    const videoRef = ref(storage, `${Date.now()}`);
+  const submitVideo = async () => {
+    const videoRef = ref(storage, file[0].name);
 
-    uploadBytes(videoRef, file[0]).then((snapshot) =>
-      console.log("Upload Video")
-    );
+    const {
+      metadata: { name },
+    } = await uploadBytes(videoRef, file[0]);
+
+    try {
+      const docRef = await addDoc(collection(db, "videos"), {
+        name,
+        comment: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
