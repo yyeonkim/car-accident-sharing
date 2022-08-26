@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Heading,
+  Spinner,
   Button,
   Flex,
   Center,
@@ -11,7 +11,7 @@ import {
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes, getMetadata } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
@@ -19,6 +19,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { storage, db } from "../firebase.js";
 
 function VideoUploadPage() {
+  const navigate = useNavigate();
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     multiple: false,
     accept: {
@@ -27,14 +28,16 @@ function VideoUploadPage() {
   });
 
   const [file, setFile] = useState(acceptedFiles);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setFile(acceptedFiles);
   }, [acceptedFiles]);
 
   const submitVideo = async () => {
-    const videoRef = ref(storage, file[0].name);
+    setIsLoading(true);
 
+    const videoRef = ref(storage, file[0].name);
     const {
       metadata: { name },
     } = await uploadBytes(videoRef, file[0]);
@@ -44,8 +47,11 @@ function VideoUploadPage() {
         name,
         comment: "",
       });
+      setIsLoading(false);
+      navigate("/user/complete");
     } catch (error) {
-      console.log(error);
+      setIsLoading(false);
+      console.log("영상을 업로드하지 못했습니다. 다시 시도해주세요 🥲");
     }
   };
 
@@ -58,6 +64,18 @@ function VideoUploadPage() {
       h="100vh"
       position="relative"
     >
+      {isLoading && (
+        <Center
+          h="100vh"
+          w="100vw"
+          zIndex={10}
+          position="fixed"
+          bgColor="rgba(0,0,0,0.5)"
+        >
+          <Spinner color="blue" size="lg" />
+        </Center>
+      )}
+
       <Link to="/user/resultList">
         <Center color="#3F8CFF" position="absolute" top="2rem" right="1rem">
           <IoPersonCircleSharp size="3rem" />
@@ -96,21 +114,19 @@ function VideoUploadPage() {
         )}
       </Flex>
 
-      <Link to="/user/complete">
-        <Button
-          mt="4rem"
-          bgColor={file[0] ? "blue" : "gray"}
-          disabled={file[0] ? false : true}
-          color="white"
-          w="15rem"
-          h="4rem"
-          fontSize="xl"
-          fontWeight="bold"
-          onClick={submitVideo}
-        >
-          분석 접수
-        </Button>
-      </Link>
+      <Button
+        mt="4rem"
+        bgColor={file[0] ? "blue" : "gray"}
+        disabled={file[0] ? false : true}
+        color="white"
+        w="15rem"
+        h="4rem"
+        fontSize="xl"
+        fontWeight="bold"
+        onClick={submitVideo}
+      >
+        분석 접수
+      </Button>
     </Flex>
   );
 }
