@@ -10,6 +10,7 @@ export const customeTheme = extendTheme({
     global: {
       html: {
         fontFamily: "Roboto",
+        fontSize: "10px",
       },
       body: {
         backgroundColor: "white",
