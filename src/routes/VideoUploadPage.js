@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Spinner,
-  Button,
-  Flex,
-  Center,
-  Input,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { Button, Flex, Center, Input, Text, Box } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
@@ -17,6 +9,7 @@ import { ref, uploadBytes, getMetadata } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 
 import { storage, db } from "../firebase.js";
+import LoadingAnimation from "../components/LoadingAnimation";
 
 function VideoUploadPage() {
   const navigate = useNavigate();
@@ -36,23 +29,32 @@ function VideoUploadPage() {
 
   const submitVideo = async () => {
     setIsLoading(true);
+    const uploadedVideoName = await uploadVideo();
 
+    try {
+      await addVideoInfoToDB(uploadedVideoName);
+    } catch (error) {
+      setIsLoading(false);
+      console.log("영상을 업로드하지 못했습니다. 다시 시도해주세요 🥲");
+    }
+  };
+
+  const uploadVideo = async () => {
     const videoRef = ref(storage, file[0].name);
     const {
       metadata: { name },
     } = await uploadBytes(videoRef, file[0]);
 
-    try {
-      const docRef = await addDoc(collection(db, "videos"), {
-        name,
-        comment: "",
-      });
-      setIsLoading(false);
-      navigate("/user/complete");
-    } catch (error) {
-      setIsLoading(false);
-      console.log("영상을 업로드하지 못했습니다. 다시 시도해주세요 🥲");
-    }
+    return name;
+  };
+
+  const addVideoInfoToDB = async (name) => {
+    const docRef = await addDoc(collection(db, "videos"), {
+      name,
+      comment: "",
+    });
+    setIsLoading(false);
+    navigate("/user/complete");
   };
 
   return (
@@ -64,17 +66,7 @@ function VideoUploadPage() {
       h="100vh"
       position="relative"
     >
-      {isLoading && (
-        <Center
-          h="100vh"
-          w="100vw"
-          zIndex={10}
-          position="fixed"
-          bgColor="rgba(0,0,0,0.5)"
-        >
-          <Spinner color="blue" size="lg" />
-        </Center>
-      )}
+      {isLoading && <LoadingAnimation />}
 
       <Link to="/user/resultList">
         <Center color="#3F8CFF" position="absolute" top="2rem" right="1rem">
