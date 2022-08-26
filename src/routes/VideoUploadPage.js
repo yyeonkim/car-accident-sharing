@@ -13,32 +13,31 @@ import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import { getDatabase, ref, set } from "firebase/database";
+import { ref, uploadBytes } from "firebase/storage";
+
+import { storage } from "../firebase.js";
 
 function VideoUploadPage() {
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
-    useDropzone({
-      accept: {
-        "video/x-msvideo": [".avi"],
-        "video/mp4": [".mp4"],
-        "video/mpeg": [".mpeg"],
-        "video/ogg": [".ogv"],
-        "video/mp2t": [".ts"],
-        "video/webm": [".webm"],
-        "video/3gpp": [".3gp"],
-        "video/3gpp2": [".3g2"],
-      },
-      multiple: false,
-    });
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    multiple: false,
+    accept: {
+      "video/*": [],
+    },
+  });
 
   const [file, setFile] = useState(acceptedFiles);
 
   useEffect(() => {
     setFile(acceptedFiles);
-    console.log(file);
   }, [acceptedFiles]);
 
-  const onClick = () => {};
+  const submitVideo = () => {
+    const videoRef = ref(storage, `${Date.now()}`);
+
+    uploadBytes(videoRef, file[0]).then((snapshot) =>
+      console.log("Upload Video")
+    );
+  };
 
   return (
     <Flex
@@ -97,7 +96,7 @@ function VideoUploadPage() {
           h="4rem"
           fontSize="xl"
           fontWeight="bold"
-          onClick={onClick}
+          onClick={submitVideo}
         >
           분석 접수
         </Button>
