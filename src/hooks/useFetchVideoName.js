@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 import { db } from "../firebase";
@@ -9,13 +9,10 @@ export default function useFetchVideoName(videoId) {
 
   useEffect(() => {
     (async () => {
-      const querySnapshot = await getDocs(collection(db, "videos"));
+      const docRef = doc(db, "videos", videoId);
+      const docSnap = await getDoc(docRef);
 
-      querySnapshot.forEach((doc) => {
-        if (doc.id === videoId) {
-          setVideoName(doc.data().name);
-        }
-      });
+      setVideoName(docSnap.data().name);
       setIsLoading(false);
     })();
   }, []);
