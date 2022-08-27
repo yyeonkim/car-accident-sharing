@@ -19,7 +19,7 @@ export default function VideoListPage() {
             </Text>
             전문가님께 도착했어요!
           </Heading>
-          <VideoList />
+          <VideoList videos={videos} />
         </>
       )}
     </Flex>
