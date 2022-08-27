@@ -6,7 +6,7 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 
 import { storage, db } from "../firebase.js";
 import LoadingAnimation from "../components/LoadingAnimation";
@@ -50,8 +50,8 @@ function VideoUploadPage() {
   };
 
   const addVideoInfoToDB = async (name) => {
-    const docRef = await addDoc(collection(db, "videos"), {
-      id: docRef.id,
+    await setDoc(doc(db, "videos", `${Date.now()}`), {
+      id: `${Date.now()}`,
       name,
       thumbnail:
         "https://images.unsplash.com/photo-1627398621460-914da4e7d46a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
