@@ -1,7 +1,7 @@
-import { Center, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import LoadingAnimation from "../components/LoadingAnimation";
 
+import LoadingAnimation from "../components/LoadingAnimation";
 import OpinionArea from "../components/OpinionArea";
 import Ratio from "../components/Ratio";
 import useFetchVideoName from "../hooks/useFetchVideoName";
