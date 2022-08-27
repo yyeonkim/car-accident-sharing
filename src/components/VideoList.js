@@ -1,16 +1,32 @@
 import { Box, Center, Circle, Stack } from "@chakra-ui/react";
 import { BsFillPlayFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 import { videos } from "../db";
+import { db } from "../firebase";
 
 export default function VideoList() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const querySnapshot = await getDocs(collection(db, "videos"));
+      querySnapshot.forEach((doc) => {
+        if (Object.keys(doc.data().comments).length === 0) {
+          setVideos((prev) => [...prev, doc.data()]);
+        }
+      });
+    })();
+  }, []);
+
   return (
     <Stack
       spacing="2rem"
       sx={{ "--video-width": "320px", " --video-height": "180px" }}
     >
-      {videos.map((video) => (
+      {/* {videos.map((video) => (
         <Link to={"/expert/videos/" + video.id} key={video.id}>
           <Center
             position="relative"
@@ -41,7 +57,7 @@ export default function VideoList() {
             </Circle>
           </Center>
         </Link>
-      ))}
+      ))} */}
     </Stack>
   );
 }

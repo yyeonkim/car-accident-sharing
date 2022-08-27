@@ -1,13 +1,15 @@
-import { Center, Flex, Heading } from "@chakra-ui/react";
+import { Center, Flex, Heading, Text } from "@chakra-ui/react";
 import VideoList from "../components/VideoList";
 import { videos } from "../db";
 
 export default function VideoListPage() {
   return (
-    <Center py="6rem">
+    <Center py="2rem">
       <Flex direction="column" justifyContent="center">
-        <Heading size="md">{videos.length}건의 영상이</Heading>
-        <Heading size="md" mb="3rem">
+        <Heading size="md" mb="2rem" lineHeight="2rem">
+          <Text display="flex">
+            <Text color="blue">{videos.length}</Text> 건의 영상이
+          </Text>
           전문가님께 도착했어요!
         </Heading>
         <VideoList />

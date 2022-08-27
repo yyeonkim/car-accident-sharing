@@ -15,7 +15,7 @@ function ResultScreen() {
 
   useEffect(() => {
     setResultVideo(myVideos.find((video) => video.id === videoId));
-  }, []);
+  }, [videoId]);
 
   return (
     <Flex display="column" px="2rem">
