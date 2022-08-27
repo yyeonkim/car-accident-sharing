@@ -42,11 +42,12 @@ export default function CommentCards() {
           mr="1rem"
           w="4rem"
           h="auto"
-          src={`/public/images/${com.img}`}
+          src={`/images/${com.img}`}
           alt="infopany"
         />
+
         <Stack fontSize="sm">
-          <Text fontWeight="bold" fontSize="lg">
+          <Text color="blue" fontWeight="bold" fontSize="lg">
             {com.ratio}
           </Text>
           <Text>{com.comment}</Text>

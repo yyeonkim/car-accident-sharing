@@ -1,8 +1,9 @@
 import React from "react";
-import { Flex, Heading, Stack } from "@chakra-ui/react";
+import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import Result from "../components/Result";
+import ArrowBack from "../components/ArrowBack";
 
 const itemList = [
   {
@@ -27,13 +28,17 @@ const itemList = [
 
 export default function ResultList() {
   return (
-    <Flex direction="column">
-      <Heading fontSize="2xl" lineHeight="2.5rem" m="2rem" mt="4rem">
-        총 3건의
-        <br />
-        김열정님의 분석 결과 입니다
+    <Flex direction="column" mx="2rem">
+      <ArrowBack />
+
+      <Heading fontSize="xl" lineHeight="2rem" my="1rem">
+        <Text fontSize="lg">김공차님</Text>
+        <Text display="flex">
+          총 &nbsp;<Text color="blue">3</Text>건의 분석 결과 입니다.
+        </Text>
       </Heading>
-      <Stack spacing="2rem" px="2rem">
+
+      <Stack spacing="1rem">
         {itemList.map((item) => (
           <Link to="detail" key={item.createdAt}>
             <Result item={item} />
