@@ -1,5 +1,5 @@
 import { Heading, Stack, useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -8,17 +8,26 @@ import { useParams } from "react-router-dom";
 import { leftRatioState, rightRatioState } from "../atom";
 import ReviewAlertDialog from "./ReviewAlertDialog";
 import { db } from "../firebase";
+import LoadingAnimation from "./LoadingAnimation";
 
 export default function OpinionArea() {
   const leftRatio = useRecoilValue(leftRatioState);
   const rightRatio = useRecoilValue(rightRatioState);
+  const [isLoading, setIsLoading] = useState(false);
   const { videoId } = useParams();
 
   const { register, watch, handleSubmit } = useForm();
   const control = useDisclosure();
   const completeRef = React.useRef();
 
-  const onValid = async (data) => {
+  const onValid = async ({ comment }) => {
+    await updateDBWithComment(comment);
+    control.onOpen();
+  };
+
+  const updateDBWithComment = async (comment) => {
+    setIsLoading(true);
+
     const docRef = doc(db, "videos", videoId);
     const docSnap = await getDoc(docRef);
 
@@ -29,28 +38,30 @@ export default function OpinionArea() {
         ...docSnap.data().comments,
         meritz: {
           ratio: `${leftRatio} : ${rightRatio}`,
-          comment: data.opinion,
+          comment,
         },
       },
     });
 
-    control.onOpen();
+    setIsLoading(false);
   };
 
   return (
     <Stack spacing="2rem">
+      {isLoading && <LoadingAnimation />}
+
       <Heading size="md">의견</Heading>
       <form onSubmit={handleSubmit(onValid)}>
         <textarea
           style={inputStyle}
-          {...register("opinion", { required: true })}
+          {...register("comment", { required: true })}
         />
         <button
           style={{
             ...buttonStyle,
-            backgroundColor: watch("opinion") ? "#3F8CFF" : "gray",
+            backgroundColor: watch("comment") ? "#3F8CFF" : "#9A9A9A",
           }}
-          disabled={watch("opinion") ? false : true}
+          disabled={watch("comment") ? false : true}
         >
           완료
         </button>
