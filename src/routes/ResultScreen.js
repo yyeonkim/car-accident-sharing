@@ -19,7 +19,7 @@ function ResultScreen() {
 
   return (
     <Flex display="column" px="2rem">
-      <ArrowBack />
+      <ArrowBack url="/user/resultList" />
 
       <Heading size="md" my="2rem" lineHeight="2rem">
         분석결과

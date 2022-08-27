@@ -1,7 +1,7 @@
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
-export default function ArrowBack() {
+export default function ArrowBack({ url }) {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ export default function ArrowBack() {
       w={8}
       h={8}
       mt="2rem"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate(url)}
     />
   );
 }

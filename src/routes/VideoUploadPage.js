@@ -10,6 +10,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 import { storage, db } from "../firebase.js";
 import LoadingAnimation from "../components/LoadingAnimation";
+import moment from "moment";
 
 function VideoUploadPage() {
   const navigate = useNavigate();
@@ -49,8 +50,13 @@ function VideoUploadPage() {
   };
 
   const addVideoInfoToDB = async (name) => {
-    await addDoc(collection(db, "videos"), {
+    const docRef = await addDoc(collection(db, "videos"), {
+      id: docRef.id,
       name,
+      thumbnail:
+        "https://images.unsplash.com/photo-1627398621460-914da4e7d46a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      createdAt: moment().format("YYYY.MM.DD"),
+      ratio: "",
       comments: {},
     });
     setIsLoading(false);
