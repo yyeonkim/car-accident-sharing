@@ -5,7 +5,7 @@ import { AiFillFileAdd } from "react-icons/ai";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import { ref, uploadBytes, getMetadata } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 
 import { storage, db } from "../firebase.js";
@@ -28,7 +28,6 @@ function VideoUploadPage() {
   }, [acceptedFiles]);
 
   const submitVideo = async () => {
-    setIsLoading(true);
     const uploadedVideoName = await uploadVideo();
 
     try {
@@ -40,6 +39,7 @@ function VideoUploadPage() {
   };
 
   const uploadVideo = async () => {
+    setIsLoading(true);
     const videoRef = ref(storage, file[0].name);
     const {
       metadata: { name },
@@ -49,9 +49,9 @@ function VideoUploadPage() {
   };
 
   const addVideoInfoToDB = async (name) => {
-    const docRef = await addDoc(collection(db, "videos"), {
+    await addDoc(collection(db, "videos"), {
       name,
-      comment: "",
+      comments: {},
     });
     setIsLoading(false);
     navigate("/user/complete");
@@ -79,6 +79,7 @@ function VideoUploadPage() {
         <Text fontSize="lg">교통사고 영상을 올려주세요</Text>
       </Box>
 
+      {/* Video Dropzone */}
       <Flex
         _hover={{ cursor: "pointer" }}
         bgColor="#f5f6fa"
