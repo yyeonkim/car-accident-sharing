@@ -5,7 +5,9 @@ export default function LoadingAnimation() {
     <Center
       h="100vh"
       w="100vw"
-      zIndex={10}
+      zIndex={100}
+      top={0}
+      left={0}
       position="fixed"
       bgColor="rgba(0,0,0,0.5)"
     >
