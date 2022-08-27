@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, Flex, Heading, Box, Stack } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 import CommentCards from "../components/CommentCards";
 import ArrowBack from "../components/ArrowBack";
+import { resultVideoState } from "../atom";
+import { myVideos } from "../db";
 
 function ResultScreen() {
+  const { videoId } = useParams();
+  const [resultVideo, setResultVideo] = useRecoilState(resultVideoState);
+
+  useEffect(() => {
+    setResultVideo(myVideos.find((video) => video.id === videoId));
+  }, []);
+
   return (
-    <Flex display="column" p="2rem" pt="3rem">
+    <Flex display="column" px="2rem">
       <ArrowBack />
 
       <Heading size="md" my="2rem" lineHeight="2rem">
@@ -24,13 +35,15 @@ function ResultScreen() {
       >
         <Heading size="sm">최다 과실비율</Heading>
         <Text fontWeight="bold" fontSize="4xl" color="red">
-          7 : 3
+          {resultVideo.ratio}
         </Text>
       </Flex>
 
       {/* 모든 보험사 의견 */}
       <Box>
-        <Heading size="md">보험사 분석</Heading>
+        <Heading size="md" mb="1rem">
+          보험사 분석
+        </Heading>
         <Stack spacing="1rem">
           <CommentCards />
         </Stack>

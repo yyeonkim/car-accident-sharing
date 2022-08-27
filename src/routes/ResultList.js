@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Result from "../components/Result";
 import ArrowBack from "../components/ArrowBack";
+import { myVideos } from "../db";
 
 const itemList = [
   {
@@ -39,8 +40,8 @@ export default function ResultList() {
       </Heading>
 
       <Stack spacing="1rem">
-        {itemList.map((item) => (
-          <Link to="detail" key={item.createdAt}>
+        {myVideos.map((item) => (
+          <Link to={item.id} key={item.id}>
             <Result item={item} />
           </Link>
         ))}

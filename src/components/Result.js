@@ -15,7 +15,7 @@ export default function Result({ item }) {
         <Image
           borderRadius={5}
           w="8rem"
-          src={`/images/${item.imgUrl}`}
+          src={item.thumbnail}
           alt="교통 사고"
           mr="1rem"
         />
@@ -30,7 +30,7 @@ export default function Result({ item }) {
               {item.ratio}
             </Text>
           </Text>
-          <Text>{item.candidate}명 참여</Text>
+          <Text>{Object.keys(item.comments).length}명 참여</Text>
         </Box>
       </Flex>
 
