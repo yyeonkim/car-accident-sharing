@@ -1,21 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, Flex, Heading, Box, Stack } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";
-import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import CommentCards from "../components/CommentCards";
 import ArrowBack from "../components/ArrowBack";
 import { resultVideoState } from "../atom";
-import { myVideos } from "../db";
 
 function ResultScreen() {
-  const { videoId } = useParams();
-  const [resultVideo, setResultVideo] = useRecoilState(resultVideoState);
-
-  useEffect(() => {
-    setResultVideo(myVideos.find((video) => video.id === videoId));
-  }, [videoId]);
+  const resultVideo = useRecoilValue(resultVideoState);
 
   return (
     <Flex display="column" px="2rem">

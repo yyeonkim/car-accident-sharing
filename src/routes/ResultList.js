@@ -35,9 +35,7 @@ export default function ResultList() {
               </Link>
             ))}
             {results.map((item) => (
-              <Link to={item.id} key={item.id}>
-                <Result item={item} />
-              </Link>
+              <Result key={item.id} item={item} />
             ))}
           </Stack>
         </>
