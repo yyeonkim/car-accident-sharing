@@ -3,22 +3,22 @@
   "name": "공차 - 공유하는 차 사고 Web App",
   "icons": [
     {
-      "src": "images/gongcha_blue.png",
+      "src": "/images/gongcha_blue.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "images/gongcha_white.png",
+      "src": "/images/gongcha_white.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/gongcha_white.png",
+      "src": "/images/gongcha_white.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#000000",
