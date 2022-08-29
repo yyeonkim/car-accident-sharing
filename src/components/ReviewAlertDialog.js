@@ -8,11 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-export default function ReviewAlertDialog({ isOpen, onClose, ref }) {
+export default function ReviewAlertDialog({ isOpen, onClose, completeRef }) {
   return (
     <AlertDialog
       isOpen={isOpen}
-      leastDestructiveRef={ref}
+      leastDestructiveRef={completeRef}
       onClose={onClose}
       bgColor="white"
     >
@@ -24,7 +24,7 @@ export default function ReviewAlertDialog({ isOpen, onClose, ref }) {
 
           <AlertDialogFooter>
             <Link to="/expert/videos">
-              <Button bgColor="#3F8CFF" color="white" ref={ref}>
+              <Button bgColor="#3F8CFF" color="white" ref={completeRef}>
                 확인
               </Button>
             </Link>

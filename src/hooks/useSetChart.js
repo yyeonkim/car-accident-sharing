@@ -46,7 +46,7 @@ export default function useSetChart() {
     setLabels(Object.keys(result));
     setSeries(Object.values(result));
     setOptions((prev) => ({ ...prev, labels }));
-  }, [series, labels]);
+  }, []);
 
   const countRatioFromComments = (comments) => {
     let result = new Object();

@@ -14,9 +14,11 @@ export default function OpinionArea() {
   const leftRatio = useRecoilValue(leftRatioState);
   const rightRatio = useRecoilValue(rightRatioState);
   const [isLoading, setIsLoading] = useState(false);
+
   const { videoId } = useParams();
 
   const { register, watch, handleSubmit } = useForm();
+
   const control = useDisclosure();
   const completeRef = React.useRef();
 
@@ -67,7 +69,7 @@ export default function OpinionArea() {
         </button>
       </form>
 
-      <ReviewAlertDialog ref={completeRef} {...control} />
+      <ReviewAlertDialog completeRef={completeRef} {...control} />
     </Stack>
   );
 }

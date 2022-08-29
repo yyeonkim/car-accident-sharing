@@ -37,12 +37,12 @@ export default function Result({ item }) {
           <Text color="gray" fontSize="xs">
             {item.createdAt}
           </Text>
-          <Text display="flex">
+          <Flex>
             예측 비율 &nbsp;
             <Text fontWeight="bold" color="red">
               {item.ratio}
             </Text>
-          </Text>
+          </Flex>
           <Text>{Object.keys(item.comments).length}명 참여</Text>
         </Box>
       </Flex>

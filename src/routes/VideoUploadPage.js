@@ -7,10 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
+import moment from "moment";
 
 import { storage, db } from "../firebase.js";
 import LoadingAnimation from "../components/LoadingAnimation";
-import moment from "moment";
+import HomeButton from "../components/HomeButton.js";
 
 function VideoUploadPage() {
   const navigate = useNavigate();
@@ -74,11 +75,15 @@ function VideoUploadPage() {
     >
       {isLoading && <LoadingAnimation />}
 
-      <Link to="/user/resultList">
-        <Center color="#3F8CFF" position="absolute" top="2rem" right="1rem">
-          <IoPersonCircleSharp size="3rem" />
-        </Center>
-      </Link>
+      <Flex w="100%" alignItems="center" justifyContent="space-between">
+        <HomeButton />
+
+        <Link to="/user/resultList">
+          <Center color="#3F8CFF">
+            <IoPersonCircleSharp size="2rem" />
+          </Center>
+        </Link>
+      </Flex>
 
       <Box mt="2rem" textAlign="center" fontWeight="bold" mb="2rem">
         <Text>전문가에게 분석받고 싶은</Text>

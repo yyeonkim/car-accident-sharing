@@ -1,8 +1,9 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 import VideoList from "../components/VideoList";
 import useFetchVideos from "../hooks/useFetchVideos";
 import LoadingAnimation from "../components/LoadingAnimation";
+import HomeButton from "../components/HomeButton";
 
 export default function VideoListPage() {
   const { videos, isLoading } = useFetchVideos();
@@ -13,6 +14,10 @@ export default function VideoListPage() {
         <LoadingAnimation />
       ) : (
         <>
+          <Flex w="100%" justifyContent="flex-start" pl="2rem" mb="1rem">
+            <HomeButton />
+          </Flex>
+
           <Heading size="md" mb="2rem" lineHeight="2rem">
             {videos.length > 0 ? (
               <Flex direction="column" alignItems="center">
