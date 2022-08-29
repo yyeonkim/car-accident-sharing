@@ -1,4 +1,4 @@
-# [Our Website](https://car-accident-sharing.vercel.app)
+# [Our Web](https://car-accident-sharing.vercel.app)
 
 # Using Stack
 
