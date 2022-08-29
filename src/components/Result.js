@@ -17,7 +17,6 @@ export default function Result({ item }) {
   return (
     <Flex
       shadow="base"
-      borderWidth="1px"
       borderRadius=".5rem"
       justifyContent="space-between"
       alignItems="center"

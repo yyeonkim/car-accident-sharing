@@ -37,13 +37,7 @@ export default function ResultScreen() {
       </Heading>
 
       {/* 최다 과실비율 */}
-      <Flex
-        direction="column"
-        alignItems="center"
-        borderWidth="1px"
-        borderRadius={8}
-        mb="2rem"
-      >
+      <Flex direction="column" alignItems="center" borderRadius={8} mb="2rem">
         <Text>최다 과실비율</Text>
         <Text fontWeight="bold" fontSize="4xl" color="red">
           {resultVideo.ratio}

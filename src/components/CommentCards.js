@@ -12,7 +12,6 @@ export default function CommentCards() {
     <Flex
       key={company}
       boxShadow="base"
-      borderWidth="1px"
       borderRadius={8}
       p="1rem"
       justifyContent="space-between"
