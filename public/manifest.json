@@ -1,6 +1,6 @@
 {
   "short_name": "공차",
-  "name": "공차 - 공유하는 차 사고 Web App",
+  "name": "공유하는 차 사고",
   "icons": [
     {
       "src": "/images/gongcha_blue.png",
@@ -8,12 +8,12 @@
       "type": "image/png"
     },
     {
-      "src": "/images/gongcha_blue.png",
+      "src": "/images/appIcon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/gongcha_blue.png",
+      "src": "/images/appIcon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
