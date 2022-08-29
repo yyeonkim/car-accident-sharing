@@ -41,14 +41,22 @@ export default function useSetChart() {
   });
 
   useEffect(() => {
-    let result = new Object();
-    Object.values(comments).forEach((item) => {
-      result[item.ratio] = result[item.ratio] ? ++result[item.ratio] : 1;
-    });
+    const result = countRatioFromComments(comments);
+
     setLabels(Object.keys(result));
     setSeries(Object.values(result));
     setOptions((prev) => ({ ...prev, labels }));
   }, [series, labels]);
+
+  const countRatioFromComments = (comments) => {
+    let result = new Object();
+
+    Object.values(comments).forEach((item) => {
+      result[item.ratio] = result[item.ratio] ? ++result[item.ratio] : 1;
+    });
+
+    return result;
+  };
 
   return { series, options };
 }
