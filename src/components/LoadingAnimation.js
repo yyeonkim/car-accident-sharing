@@ -11,7 +11,7 @@ export default function LoadingAnimation() {
       position="fixed"
       bgColor="rgba(0,0,0,0.5)"
     >
-      <Spinner color="blue" size="lg" />
+      <Spinner color="white" size="lg" />
     </Center>
   );
 }
