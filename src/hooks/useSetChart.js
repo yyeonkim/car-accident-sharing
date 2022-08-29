@@ -7,12 +7,10 @@ export default function useSetChart() {
   const comments = useRecoilValue(resultVideoCommentsState);
 
   const [series, setSeries] = useState([]);
-  const [labels, setLabels] = useState([]);
   const [options, setOptions] = useState({
     chart: {
       type: "donut",
     },
-    labels,
     responsive: [
       {
         options: {
@@ -43,9 +41,8 @@ export default function useSetChart() {
   useEffect(() => {
     const result = countRatioFromComments(comments);
 
-    setLabels(Object.keys(result));
     setSeries(Object.values(result));
-    setOptions((prev) => ({ ...prev, labels }));
+    setOptions((prev) => ({ ...prev, labels: Object.keys(result) }));
   }, []);
 
   const countRatioFromComments = (comments) => {
@@ -54,6 +51,7 @@ export default function useSetChart() {
     Object.values(comments).forEach((item) => {
       result[item.ratio] = result[item.ratio] ? ++result[item.ratio] : 1;
     });
+    console.log(Object.keys(result));
 
     return result;
   };
