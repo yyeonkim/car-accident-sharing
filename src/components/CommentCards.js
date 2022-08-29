@@ -11,7 +11,7 @@ export default function CommentCards() {
   return Object.keys(comments).map((company) => (
     <Flex
       key={company}
-      boxShadow="md"
+      boxShadow="base"
       borderWidth="1px"
       borderRadius={8}
       p="1rem"
