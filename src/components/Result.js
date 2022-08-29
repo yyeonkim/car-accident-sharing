@@ -16,7 +16,7 @@ export default function Result({ item }) {
 
   return (
     <Flex
-      shadow="base"
+      shadow="md"
       borderWidth="1px"
       borderRadius=".5rem"
       justifyContent="space-between"
