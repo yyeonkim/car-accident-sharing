@@ -1,7 +1,7 @@
 import { Center, Divider, Flex, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-import UsearIcon from "./components/UserIcon";
+import UsearIcon from "./components/Buttons/UserIcon";
 
 export default function App() {
   return (

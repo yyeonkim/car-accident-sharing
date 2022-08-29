@@ -3,7 +3,7 @@ import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import Result from "../components/Result";
-import ArrowBack from "../components/ArrowBack";
+import ArrowBack from "../components/Buttons/ArrowBack";
 import LoadingAnimation from "../components/LoadingAnimation";
 import useGetResults from "../hooks/useGetResults";
 import { myVideos } from "../db";

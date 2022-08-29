@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import VideoList from "../components/VideoList";
 import useFetchVideos from "../hooks/useFetchVideos";
 import LoadingAnimation from "../components/LoadingAnimation";
-import HomeButton from "../components/HomeButton";
+import HomeButton from "../components/Buttons/HomeButton";
 
 export default function VideoListPage() {
   const { videos, isLoading } = useFetchVideos();

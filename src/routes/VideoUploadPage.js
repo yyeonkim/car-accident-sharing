@@ -11,7 +11,7 @@ import moment from "moment";
 
 import { storage, db } from "../firebase.js";
 import LoadingAnimation from "../components/LoadingAnimation";
-import HomeButton from "../components/HomeButton.js";
+import HomeButton from "../components/Buttons/HomeButton.js";
 
 function VideoUploadPage() {
   const navigate = useNavigate();

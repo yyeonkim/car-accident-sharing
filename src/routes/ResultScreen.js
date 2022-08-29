@@ -17,7 +17,7 @@ import { useRecoilValue } from "recoil";
 import Chart from "react-apexcharts";
 
 import CommentCards from "../components/CommentCards";
-import ArrowBack from "../components/ArrowBack";
+import ArrowBack from "../components/Buttons/ArrowBack";
 import { resultVideoState } from "../atom";
 import useSetChart from "../hooks/useSetChart";
 
