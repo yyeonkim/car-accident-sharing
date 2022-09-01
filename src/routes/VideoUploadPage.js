@@ -51,8 +51,9 @@ function VideoUploadPage() {
   };
 
   const addVideoInfoToDB = async (name) => {
-    await setDoc(doc(db, "videos", `${Date.now()}`), {
-      id: `${Date.now()}`,
+    const id = `${Date.now()}`;
+    await setDoc(doc(db, "videos", id), {
+      id,
       name,
       thumbnail:
         "https://images.unsplash.com/photo-1627398621460-914da4e7d46a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",

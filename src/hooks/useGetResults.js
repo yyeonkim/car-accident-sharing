@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 export default function useGetResults() {
-  const [results, setResults] = useState({});
+  const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

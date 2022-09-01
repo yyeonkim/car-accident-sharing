@@ -12,7 +12,11 @@ export default function useFetchVideoName(videoId) {
       const docRef = doc(db, "videos", videoId);
       const docSnap = await getDoc(docRef);
 
-      setVideoName(docSnap.data().name);
+      if (docSnap.exists()) {
+        setVideoName(docSnap.data().name);
+      } else {
+        console.log("파일을 불러올 수 없습니다.");
+      }
       setIsLoading(false);
     })();
   }, []);
