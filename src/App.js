@@ -2,6 +2,7 @@ import { Center, Divider, Flex, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import UsearIcon from "./components/Buttons/UserIcon";
+import { MESSAGE } from "./constants/index.js";
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
         mb="5rem"
         color="blue"
       >
-        서비스 이용 목적을 선택해주세요
+        {MESSAGE.SELECT_USER}
       </Heading>
       <Flex justifyContent="space-evenly" alignItems="center">
         <Link to="/user">

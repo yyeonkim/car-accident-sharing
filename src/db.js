@@ -1,4 +1,4 @@
-export const videos = [
+const videos = [
   {
     id: "32874824",
     thumbnail:
@@ -21,7 +21,7 @@ export const videos = [
   },
 ];
 
-export const myVideos = [
+const myReports = [
   {
     id: "284636",
     thumbnail:
@@ -109,3 +109,5 @@ export const myVideos = [
     },
   },
 ];
+
+export { videos, myReports };

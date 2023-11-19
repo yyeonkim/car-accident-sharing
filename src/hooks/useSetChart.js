@@ -46,12 +46,11 @@ export default function useSetChart() {
   }, []);
 
   const countRatioFromComments = (comments) => {
-    let result = new Object();
+    let result = {};
 
     Object.values(comments).forEach((item) => {
       result[item.ratio] = result[item.ratio] ? ++result[item.ratio] : 1;
     });
-    console.log(Object.keys(result));
 
     return result;
   };

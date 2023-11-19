@@ -5,6 +5,7 @@ import LoadingAnimation from "../components/LoadingAnimation";
 import OpinionArea from "../components/OpinionArea";
 import Ratio from "../components/Ratio";
 import useFetchVideoName from "../hooks/useFetchVideoName";
+import { LINK } from "../constants/index.js";
 
 export default function VideoReviewPage() {
   const { videoId } = useParams();
@@ -18,7 +19,7 @@ export default function VideoReviewPage() {
         <>
           <video
             autoPlay
-            src={`https://firebasestorage.googleapis.com/v0/b/gongcha-2b0f0.appspot.com/o/${videoName}?alt=media`}
+            src={LINK.VIDEO(videoName)}
             controls
             width="100%"
           ></video>

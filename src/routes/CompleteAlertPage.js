@@ -1,14 +1,15 @@
 import { Button, Flex, Text, Heading, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { MESSAGE } from "../constants/index.js";
 
 export default function CompleteAlertPage() {
   return (
     <Flex direction="column" px="3rem" h="100vh" justifyContent="space-between">
       <Box>
         <Heading mt="10rem" mb="1rem">
-          접수되었습니다.
+          {MESSAGE.RECEIVED_TITLE}
         </Heading>
-        <Text>분석이 완료되는 대로 알려드리겠습니다.</Text>
+        <Text> {MESSAGE.RECEIVED_DETAIL}</Text>
       </Box>
       <Link to="/user">
         <Button
@@ -19,7 +20,7 @@ export default function CompleteAlertPage() {
           w="100%"
           mb="5rem"
         >
-          확인
+          {MESSAGE.CONFIRM}
         </Button>
       </Link>
     </Flex>

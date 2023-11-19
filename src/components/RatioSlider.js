@@ -13,6 +13,7 @@ import { leftRatioState } from "../atom";
 
 const markValue = [10, 20, 30, 40, 50, 60, 70, 80, 90];
 
+/* 과실 비율 슬라이더 */
 export default function RatioSlider() {
   const [sliderValue, setSliderValue] = useState(50);
   const setLeftRatio = useSetRecoilState(leftRatioState);

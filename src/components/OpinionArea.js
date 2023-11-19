@@ -9,6 +9,7 @@ import { leftRatioState, rightRatioState } from "../atom";
 import ReviewAlertDialog from "./ReviewAlertDialog";
 import { db } from "../firebase";
 import LoadingAnimation from "./LoadingAnimation";
+import { DB, MESSAGE } from "../constants/index.js";
 
 export default function OpinionArea() {
   const leftRatio = useRecoilValue(leftRatioState);
@@ -16,9 +17,7 @@ export default function OpinionArea() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { videoId } = useParams();
-
   const { register, watch, handleSubmit } = useForm();
-
   const control = useDisclosure();
   const completeRef = React.useRef();
 
@@ -30,10 +29,10 @@ export default function OpinionArea() {
   const updateDBWithComment = async (comment) => {
     setIsLoading(true);
 
-    const docRef = doc(db, "videos", videoId);
+    const docRef = doc(db, DB.VIDEO, videoId);
     const docSnap = await getDoc(docRef);
 
-    await setDoc(doc(db, "videos", videoId), {
+    await setDoc(doc(db, DB.VIDEO, videoId), {
       ...docSnap.data(),
       ratio: `${leftRatio} : ${rightRatio}`,
       comments: {
@@ -52,7 +51,7 @@ export default function OpinionArea() {
     <Stack spacing="2rem">
       {isLoading && <LoadingAnimation />}
 
-      <Heading size="md">의견</Heading>
+      <Heading size="md">{MESSAGE.OPINION}</Heading>
       <form onSubmit={handleSubmit(onValid)}>
         <textarea
           style={inputStyle}
@@ -65,7 +64,7 @@ export default function OpinionArea() {
           }}
           disabled={watch("comment") ? false : true}
         >
-          완료
+          {MESSAGE.COMPLETE}
         </button>
       </form>
 

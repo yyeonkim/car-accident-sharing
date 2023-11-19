@@ -2,6 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 import { db } from "../firebase";
+import { DB } from "../constants/index.js";
 
 export default function useFetchVideoName(videoId) {
   const [videoName, setVideoName] = useState("");
@@ -9,7 +10,7 @@ export default function useFetchVideoName(videoId) {
 
   useEffect(() => {
     (async () => {
-      const docRef = doc(db, "videos", videoId);
+      const docRef = doc(db, DB.VIDEO, videoId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {

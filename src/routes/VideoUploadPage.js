@@ -8,6 +8,7 @@ import { useDropzone } from "react-dropzone";
 import { ref, uploadBytes } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
 import moment from "moment";
+import { LINK, MESSAGE } from "../constants/index.js";
 
 import { storage, db } from "../firebase.js";
 import LoadingAnimation from "../components/LoadingAnimation";
@@ -22,12 +23,12 @@ function VideoUploadPage() {
     },
   });
 
-  const [file, setFile] = useState(acceptedFiles);
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     setFile(acceptedFiles);
   }, [acceptedFiles]);
+
+  const [file, setFile] = useState(acceptedFiles);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitVideo = async () => {
     const uploadedVideoName = await uploadVideo();
@@ -36,7 +37,6 @@ function VideoUploadPage() {
       await addVideoInfoToDB(uploadedVideoName);
     } catch (error) {
       setIsLoading(false);
-      console.log("영상을 업로드하지 못했습니다. 다시 시도해주세요 🥲");
     }
   };
 
@@ -55,8 +55,7 @@ function VideoUploadPage() {
     await setDoc(doc(db, "videos", id), {
       id,
       name,
-      thumbnail:
-        "https://images.unsplash.com/photo-1627398621460-914da4e7d46a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      thumbnail: LINK.THUMBNAIL, // dummy data
       createdAt: moment().format("YYYY.MM.DD"),
       ratio: "",
       comments: {},
@@ -87,8 +86,8 @@ function VideoUploadPage() {
       </Flex>
 
       <Box mt="2rem" textAlign="center" fontWeight="bold" mb="2rem">
-        <Text>전문가에게 분석받고 싶은</Text>
-        <Text fontSize="lg">교통사고 영상을 올려주세요</Text>
+        <Text>{MESSAGE.UPLOAD_SUBTITLE}</Text>
+        <Text fontSize="lg">{MESSAGE.UPLOAD_TITLE}</Text>
       </Box>
 
       {/* Video Dropzone */}

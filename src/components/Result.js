@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { resultVideoState } from "../atom";
+import { MESSAGE } from "../constants/index.js";
 
 export default function Result({ item }) {
   const setResultVideo = useSetRecoilState(resultVideoState);
@@ -37,7 +38,7 @@ export default function Result({ item }) {
             {item.createdAt}
           </Text>
           <Flex>
-            예측 비율 &nbsp;
+            {MESSAGE.PREDICTION_RATIO} &nbsp;
             <Text fontWeight="bold" color="red">
               {item.ratio}
             </Text>

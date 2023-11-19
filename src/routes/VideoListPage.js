@@ -1,9 +1,10 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 
 import VideoList from "../components/VideoList";
 import useFetchVideos from "../hooks/useFetchVideos";
 import LoadingAnimation from "../components/LoadingAnimation";
 import HomeButton from "../components/Buttons/HomeButton";
+import { MESSAGE } from "../constants/index.js";
 
 export default function VideoListPage() {
   const { videos, isLoading } = useFetchVideos();
@@ -28,7 +29,7 @@ export default function VideoListPage() {
                 <Text>전문가님께 도착했어요!</Text>
               </Flex>
             ) : (
-              "아직 영상이 없습니다."
+              MESSAGE.EMPTY_VIDEO
             )}
           </Heading>
           <VideoList videos={videos} />

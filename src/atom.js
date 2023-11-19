@@ -1,11 +1,11 @@
 import { atom, selector } from "recoil";
 
-export const leftRatioState = atom({
+const leftRatioState = atom({
   key: "leftRatio",
   default: 5,
 });
 
-export const rightRatioState = selector({
+const rightRatioState = selector({
   key: "rightRatio",
   get: ({ get }) => {
     const leftRatio = get(leftRatioState);
@@ -14,15 +14,22 @@ export const rightRatioState = selector({
   },
 });
 
-export const resultVideoState = atom({
+const resultVideoState = atom({
   key: "resultVideo",
   default: {},
 });
 
-export const resultVideoCommentsState = selector({
+const resultVideoCommentsState = selector({
   key: "resultVideoComments",
   get: ({ get }) => {
     const resultVideo = get(resultVideoState);
     return resultVideo.comments ? resultVideo.comments : {};
   },
 });
+
+export {
+  leftRatioState,
+  rightRatioState,
+  resultVideoState,
+  resultVideoCommentsState,
+};

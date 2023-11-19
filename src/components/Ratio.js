@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 
 import { leftRatioState, rightRatioState } from "../atom";
 import RatioSlider from "./RatioSlider";
+import { MESSAGE } from "../constants/index.js";
 
 export default function Ratio() {
   const leftRatio = useRecoilValue(leftRatioState);
@@ -10,7 +11,7 @@ export default function Ratio() {
 
   return (
     <Stack spacing="2rem" mb="3rem">
-      <Heading size="md">과실 비율</Heading>
+      <Heading size="md">{MESSAGE.FAULT_RATE}</Heading>
       <Heading textAlign="center" size="lg">
         {leftRatio} vs {rightRatio}
       </Heading>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 
 import { db } from "../firebase";
+import { DB } from "../constants/index.js";
 
 // comment 없는 사고 영상 가져오기
 export default function useFetchVideos() {
@@ -10,7 +11,7 @@ export default function useFetchVideos() {
 
   useEffect(() => {
     (async () => {
-      const querySnapshot = await getDocs(collection(db, "videos"));
+      const querySnapshot = await getDocs(collection(db, DB.VIDEO));
       const result = [];
 
       querySnapshot.forEach((doc) => {

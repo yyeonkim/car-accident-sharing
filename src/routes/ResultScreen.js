@@ -20,12 +20,11 @@ import CommentCards from "../components/CommentCards";
 import ArrowBack from "../components/Buttons/ArrowBack";
 import { resultVideoState } from "../atom";
 import useSetChart from "../hooks/useSetChart";
+import { MESSAGE } from "../constants/index.js";
 
 export default function ResultScreen() {
   const resultVideo = useRecoilValue(resultVideoState);
-
   const { series, options } = useSetChart();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -33,12 +32,12 @@ export default function ResultScreen() {
       <ArrowBack url="/user/resultList" />
 
       <Heading size="md" mt="2rem" mb="1rem" lineHeight="2rem">
-        분석결과
+        {MESSAGE.ANALYSIS_RESULT}
       </Heading>
 
       {/* 최다 과실비율 */}
       <Flex direction="column" alignItems="center" borderRadius={8} mb="2rem">
-        <Text>최다 과실비율</Text>
+        <Text>{MESSAGE.MOST_FAULT_RATE}</Text>
         <Text fontWeight="bold" fontSize="4xl" color="red">
           {resultVideo.ratio}
         </Text>
@@ -52,12 +51,12 @@ export default function ResultScreen() {
         mt="2rem"
       >
         <Heading size="md" mb="1rem">
-          보험사 분석
+          {MESSAGE.INSURER_ANALYSISQ}
         </Heading>
 
         <Flex alignItems="center" onClick={onOpen}>
           <Text fontWeight="bold" fontSize="lg" mr=".5rem">
-            통계 보기
+            {MESSAGE.VIEW_STATISTICS}
           </Text>
           <IoIosArrowForward />
         </Flex>
@@ -67,7 +66,7 @@ export default function ResultScreen() {
       <Modal blockScrollOnMount isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent w="90%" maxW="30rem" bgColor="white" pb="1rem">
-          <ModalHeader size="sm">비율 통계</ModalHeader>
+          <ModalHeader size="sm">{MESSAGE.RATE_ANALYSIS}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Chart options={options} series={series} type="donut" />
