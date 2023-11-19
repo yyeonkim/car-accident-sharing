@@ -20,7 +20,7 @@ export default function useGetResults() {
       setResults(items);
       setIsLoading(false);
     })();
-  }, [results]);
+  }, []);
 
   return { results, isLoading };
 }
