@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=Firebase&logoColor=white"/> <img src="https://img.shields.io/badge/Chakra UI-319795?style=flat&logo=ChakraUI&logoColor=white"/>
 <img src="https://img.shields.io/badge/PWA-5A0FC8?style=flat&logo=PWA&logoColor=white"/>
 
-<img width="80%" src="./cover.png">
+<img width="30%" src="./logo.png">
 
 </div>
 
