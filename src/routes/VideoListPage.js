@@ -1,3 +1,4 @@
+// 작성자: yyeonkim
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
 import VideoList from "../components/VideoList";

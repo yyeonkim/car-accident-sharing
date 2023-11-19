@@ -1,3 +1,4 @@
+// 작성자: yyeonkim
 import React from "react";
 import { Image, Text, Flex, Box, Stack } from "@chakra-ui/react";
 import { IoIosArrowForward } from "react-icons/io";

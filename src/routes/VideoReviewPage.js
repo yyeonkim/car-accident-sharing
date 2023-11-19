@@ -1,3 +1,4 @@
+// 작성자: yyeonkim
 import { Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 

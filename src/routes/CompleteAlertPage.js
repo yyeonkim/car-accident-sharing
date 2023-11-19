@@ -1,3 +1,4 @@
+// 작성자: yyeonkim
 import { Button, Flex, Text, Heading, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { MESSAGE } from "../constants/index.js";

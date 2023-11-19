@@ -1,3 +1,4 @@
+// 작성자: kimwest00
 import React from "react";
 import {
   Text,

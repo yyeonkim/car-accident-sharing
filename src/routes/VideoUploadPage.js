@@ -1,3 +1,4 @@
+// 작성자: yyeonkim
 import React, { useState, useEffect } from "react";
 import { Button, Flex, Center, Input, Text, Box } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
