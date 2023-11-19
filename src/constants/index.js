@@ -20,7 +20,7 @@ const MESSAGE = {
 };
 
 const DB = {
-  VIDEO: "video",
+  VIDEO: "videos",
 };
 
 const LINK = {
